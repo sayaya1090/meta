@@ -1,0 +1,8 @@
+spring:
+  application.name: test
+  main.web-application-type: reactive
+  cloud:
+    metaform:
+      test-url: /test
+server:
+  port: 9984

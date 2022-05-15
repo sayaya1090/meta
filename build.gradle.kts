@@ -2,7 +2,6 @@ plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("kapt") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
-    id("org.springframework.boot") version "2.6.7"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 }
 allprojects {
@@ -15,7 +14,6 @@ subprojects {
         plugin("kotlin")
         plugin("kotlin-kapt")
         plugin("kotlin-spring")
-        plugin("org.springframework.boot")
         plugin("io.spring.dependency-management")
     }
     group = "net.sayaya"

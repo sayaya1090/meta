@@ -1,5 +1,5 @@
 [libraries]
-spring-boot-test    = { module="org.springframework.boot:spring-boot-starter-test" }
+spring-boot-test    = "org.springframework.boot:spring-boot-starter-test:2.6.7"
 mockito             = "org.mockito.kotlin:mockito-kotlin:4.0.0"
 reactor-test        = "io.projectreactor:reactor-test:3.4.14"
 kotlin-test         = { module="org.jetbrains.kotlin:kotlin-test" }
