@@ -1,13 +1,48 @@
 plugins {
-    kotlin("jvm") version "1.6.21" apply false
-    kotlin("kapt") version "1.6.21" apply false
+    kotlin("jvm") version "1.6.21"
+    kotlin("kapt") version "1.6.21"
+    kotlin("plugin.spring") version "1.6.21"
+    id("org.springframework.boot") version "2.6.7"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
 }
-
-subprojects {
+allprojects {
     repositories {
         mavenCentral()
-        mavenLocal()
     }
-    group = "com.gcgenome"
+}
+subprojects {
+    apply {
+        plugin("kotlin")
+        plugin("kotlin-kapt")
+        plugin("kotlin-spring")
+        plugin("org.springframework.boot")
+        plugin("io.spring.dependency-management")
+    }
+    group = "net.sayaya"
     version = "1.0"
+    repositories {
+        mavenCentral()
+    }
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.cloud:spring-cloud-dependencies:2021.0.1")
+        }
+    }
+    kapt {
+        keepJavacAnnotationProcessors = true
+        includeCompileClasspath = false
+    }
+    tasks {
+        withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+            kotlinOptions {
+                jvmTarget = "17"
+            }
+        }
+        getByName<Jar>("jar") {
+            enabled = false
+        }
+        test {
+            useJUnitPlatform()
+        }
+    }
 }
